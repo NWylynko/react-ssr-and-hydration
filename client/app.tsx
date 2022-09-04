@@ -2,10 +2,27 @@
 // so this code needs to work both in node and the browser :)
 
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
+  body {
+    background-color: #161925;
+    color: #FAF6F6;
+    font-family: 'Dongle', sans-serif;
+  }
+
+  button {
+    font-family: 'Dongle', sans-serif;
+  }
+`;
 
 export const App = () => {
-  return <Counter />;
+  return (
+    <>
+      <GlobalStyles />
+      <Counter />
+    </>
+  );
 };
 
 // A custom hook to manage a number
@@ -23,21 +40,39 @@ const Counter = () => {
   const { count, increment, decrement } = useCount(100);
 
   return (
-    <>
+    <Container>
       <div>
-        <span>this is the count: {count}</span>
+        <Title>this is the count: {count}</Title>
       </div>
       <div>
-        <Button onClick={increment}>Add</Button>
-        <Button onClick={decrement}>Sub</Button>
+        <Button onClick={increment} color="green">
+          Add
+        </Button>
+        <Button onClick={decrement} color="red">
+          Sub
+        </Button>
       </div>
-    </>
+    </Container>
   );
 };
 
-const Button = styled.button`
-  border: 2px solid black;
+const Title = styled.h1`
+  margin: 0;
+`;
+
+const Button = styled.button<{ color: string }>`
+  border: 2px solid ${(props) => props.color};
   border-radius: 4px;
-  padding: 4px 8px;
+  padding: 4px 24px;
   margin: 4px;
+  font-size: 24px;
+  color: ${(props) => props.color};
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
 `;
