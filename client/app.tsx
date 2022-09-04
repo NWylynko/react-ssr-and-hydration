@@ -2,29 +2,10 @@
 // so this code needs to work both in node and the browser :)
 
 import React, { useState } from "react";
-import type { PropsWithChildren } from "react";
+import styled from "styled-components";
 
 export const App = () => {
-  return (
-    <Document>
-      {/* I have built a counter as an example,
-      feel free to replace it with whatever you feel like */}
-      <Counter />
-    </Document>
-  );
-};
-
-const Document = ({ children }: PropsWithChildren) => {
-  return (
-    <>
-      <head>
-        {/* here we need to include the javascript bundle
-        so the browser downloads it. */}
-        <script src={`./static/main.js`} type="module" />
-      </head>
-      <body>{children}</body>
-    </>
-  );
+  return <Counter />;
 };
 
 // A custom hook to manage a number
@@ -47,9 +28,16 @@ const Counter = () => {
         <span>this is the count: {count}</span>
       </div>
       <div>
-        <button onClick={increment}>Add</button>
-        <button onClick={decrement}>Sub</button>
+        <Button onClick={increment}>Add</Button>
+        <Button onClick={decrement}>Sub</Button>
       </div>
     </>
   );
 };
+
+const Button = styled.button`
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: 4px;
+`;
