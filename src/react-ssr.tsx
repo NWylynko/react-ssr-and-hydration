@@ -29,7 +29,7 @@ export const SSRHandler: RouteHandlerMethod = (req, res) => {
     },
   };
 
-  // where is where we kick off the render from the top component app
+  // here is where we kick off the render from the top component, <App />
   // for a more complete solution we would want to pass props along like url and cookies
   // we could have a context that would hold that stuff
   // then the dev can use some custom hooks to obtain that data to conditionally render stuff
