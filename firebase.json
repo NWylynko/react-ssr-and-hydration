@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "site": "react-ssr-and-hydration",
+    "rewrites": [{
+      "source": "**",
+      "run": {
+        "serviceId": "react-ssr-and-hydration",
+        "region": "us-central1"
+      }
+    }]
+  }
+}
