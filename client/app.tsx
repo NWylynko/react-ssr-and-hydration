@@ -31,8 +31,11 @@ const useCount = (initialCount: number) => {
 
   const increment = () => setCount((n) => n + 1);
   const decrement = () => setCount((n) => n - 1);
+  const reset = () => setCount(initialCount);
+  const add = (amount: number) => setCount((n) => n + amount);
+  const remove = (amount: number) => setCount((n) => n - amount);
 
-  return { count, increment, decrement };
+  return { count, increment, decrement, reset, add, remove };
 };
 
 // Our component with state that the user can fiddle with
